@@ -22,7 +22,7 @@ O Projeto **Catalogo** é um mini-projeto WEB API desenvolvida em ASP.NET Core p
 ## Configuração do Projeto
 1. Clone o repositório:
 ```
-giy clone git@github.com:fcamilalima/Catalogo_Clean_Architecture.git
+git clone git@github.com:fcamilalima/Catalogo_Clean_Architecture.git
 ```
 
 ## Contato
