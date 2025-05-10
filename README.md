@@ -1,7 +1,14 @@
-# Catalogo_Clean
+# Catalogo_Clean_Arquitecture
 
 ## Descrição
 O Projeto **Catalogo** é um mini-projeto WEB API desenvolvida em ASP.NET Core para gerenciar um catálogo de produtos e categorias utilizando `Arquiteutra Limpa` ou `Clean Arquitecture`. 
+
+## Funcionalidades
+- **Catalogo.Domain**: Modelo de Domínio, Interfaces e Regras de Negócio.
+- **Catalogo.Application**: Regras de Aplicação, Serviços, Mapeamentos e DTOs.
+- **Catalogo.Infraestructure**: Lógica de Acesso a Dados, Contexto, Configurações, ORM.
+- **Catalogo.CrossCutting**: IoC, Registro de Serviços e Recursos, DI.
+- **Catalogo.API**: Controladores, Endpoints e Serviços.  
 
 ## Tecnologias Utilizadas
 - **.NET 8**
