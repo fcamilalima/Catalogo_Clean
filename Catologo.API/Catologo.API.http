@@ -1,0 +1,6 @@
+@Catologo.API_HostAddress = http://localhost:5217
+
+GET {{Catologo.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
