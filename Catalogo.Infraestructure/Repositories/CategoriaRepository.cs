@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Infraestructure.Repositories;
 
-public class CategoriaRepository : ICategoryRepository
+public class CategoriaRepository : ICategoriaRepository
 {
     private ApplicationDbContext _context;
 

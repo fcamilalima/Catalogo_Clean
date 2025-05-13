@@ -1,18 +1,18 @@
 ﻿using Catalogo.Application.DTOs;
 using Catalogo.Application.Interfaces;
+using Catalogo.Application.Mappings;
+using Catalogo.Domain.Interfaces;
 
 namespace Catalogo.Application.Services
 {
     public class CategoriaService : ICategoriaService
     {
-        private readonly ICategoriaRepository _categoriaRepository;
-        private readonly IMapper _mapper;
-        public CategoriaService(ICategoriaRepository categoriaRepository, IMapper mapper)
+        private readonly ICategoriaRepository _repository;
+        public CategoriaService(ICategoriaRepository repository)
         {
-            _categoriaRepository = categoriaRepository;
-            _mapper = mapper;
+            _repository = repository;
         }
-        public Task<IEnumerable<CategoriaDTO>> GetCategorias()
+        public async Task<IEnumerable<CategoriaDTO>> GetCategorias()
         {
             throw new NotImplementedException();
         }
