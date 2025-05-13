@@ -2,7 +2,7 @@
 
 namespace Catalogo.Domain.Interfaces;
 
-public interface ICategoryRepository
+public interface ICategoriaRepository
 {
     Task<IEnumerable<Categoria>> GetCategoriasAsync();
     Task<Categoria> GetByIDAsync(int? id);
