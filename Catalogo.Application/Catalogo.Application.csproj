@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\Mappings\DomainToDTOMappingCategoriaProfile.cs" />
+    <Compile Remove="DTOs\Mappings\DomainToDTOMappingProdutoProfile.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Catalogo.Domain\Catalogo.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Mappings\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
 
 </Project>

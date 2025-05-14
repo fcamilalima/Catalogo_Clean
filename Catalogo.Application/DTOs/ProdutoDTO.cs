@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Catalogo.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Catalogo.Application.DTOs;
@@ -33,6 +34,5 @@ public class ProdutoDTO
     [Required(ErrorMessage = "Informe a data do cadastro!")]
     public DateTime DataCadastro { get; set; }
     public int CategoriaID { get; set; }
-
 
 }

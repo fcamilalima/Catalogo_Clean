@@ -1,14 +1,17 @@
 ﻿using Catalogo.Application.DTOs;
 using Catalogo.Domain.Entities;
 
-namespace Catalogo.Application.Mappings;
+namespace Catalogo.Application.DTOs.Mappings;
 
 public static class DomainToDTOMappingCategoriaProfile
 {
     public static Categoria? ToCategoria(this CategoriaDTO categoriaDTO) {
         if (categoriaDTO is null) return null;
 
-        return new Categoria(categoriaDTO.ID, categoriaDTO.Nome, categoriaDTO.ImagemURL);
+        return new Categoria(categoriaDTO.ID, categoriaDTO.Nome, categoriaDTO.ImagemURL)
+        {
+            Produtos = new List<Produto>()
+        };
     }
 
     public static CategoriaDTO? ToCategoriaDTO(this Categoria categoria)
@@ -22,12 +25,17 @@ public static class DomainToDTOMappingCategoriaProfile
         };
     }
 
-    public static IEnumerable<CategoriaDTO> ToCategoriaDTOList(this IEnumerable<Categoria> categorias)
+    public static IEnumerable<CategoriaDTO> ToCategoriaDTOList(this IEnumerable<CategoriaDTO> categorias)
     {
         if (categorias is null || !categorias.Any())
             return new List<CategoriaDTO>();
 
-        return categorias.Select(c => c.ToCategoriaDTO()).ToList();
+        return categorias.Select(categoria => new CategoriaDTO()
+        {
+            ID = categoria.ID,
+            Nome = categoria.Nome,
+            ImagemURL = categoria.ImagemURL
+        });
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Catalogo.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Catalogo.Application.DTOs;
 
@@ -15,4 +16,5 @@ public class CategoriaDTO
     [MinLength(5)]
     [MaxLength(250)]
     public string ImagemURL { get; set; }
+
 }
