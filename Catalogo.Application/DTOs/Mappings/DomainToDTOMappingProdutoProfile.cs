@@ -1,7 +1,7 @@
 ﻿using Catalogo.Application.DTOs;
 using Catalogo.Domain.Entities;
 
-namespace Catalogo.Application.Mappings;
+namespace Catalogo.Application.DTOs.Mappings;
 
 public static class DomainToDTOMappingProdutoProfile
 {
@@ -31,11 +31,21 @@ public static class DomainToDTOMappingProdutoProfile
         };
     }
 
-    public static IEnumerable<ProdutoDTO> ToProdutoDTOList(this IEnumerable<Produto> produtos)
+    public static IEnumerable<ProdutoDTO> ToProdutoDTOList(this IEnumerable<ProdutoDTO> produtos)
     {
         if (produtos is null || !produtos.Any()) 
             return new List<ProdutoDTO>();
 
-        return produtos.Select(p => p.ToProdutoDTO()).ToList();
+        return produtos.Select(produto => new ProdutoDTO()
+        {
+            ID = produto.ID,
+            Nome = produto.Nome,
+            Descricao = produto.Descricao,
+            Preco = produto.Preco,
+            ImagemURL = produto.ImagemURL,
+            Estoque = produto.Estoque,
+            DataCadastro = produto.DataCadastro,
+            CategoriaID = produto.CategoriaID
+        }).ToList();
     }
 }

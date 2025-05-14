@@ -14,23 +14,38 @@ namespace Catalogo.Application.Services
         }
         public async Task<IEnumerable<CategoriaDTO>> GetCategorias()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categorias = await _repository.GetCategoriasAsync();
+                var categoriasDTO = categorias.ToCategoriaDTOList();
+                return categoriasDTO;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
-        public Task<CategoriaDTO> GetById(int id)
+        public async Task<CategoriaDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var categoria = await _repository.GetByIDAsync(id);
+            return categoria?.ToCategoriaDTO();
+
         }
-        public Task Add(CategoriaDTO categoriaDTO)
+
+        public async Task Add(CategoriaDTO categoriaDTO)
         {
-            throw new NotImplementedException();
+            var categoria = categoriaDTO.ToCategoria();
+            _ = await _repository.CreateAsync(categoria);
         }
-        public Task Update(CategoriaDTO categoriaDTO)
+        public async Task Update(CategoriaDTO categoriaDTO)
         {
-            throw new NotImplementedException();
+            var categoria = categoriaDTO.ToCategoria();
+            _ = await _repository.UpdateAsync(categoria);
         }
-        public Task Remove(int? id)
+        public async Task Remove(int? id)
         {
-            throw new NotImplementedException();
+            var categoria = await _repository.GetByIDAsync(id);
+            _ = _repository.RemoveAsync(categoria);
         }
     }
 }

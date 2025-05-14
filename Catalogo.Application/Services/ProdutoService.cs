@@ -1,5 +1,7 @@
 ﻿using Catalogo.Application.DTOs;
 using Catalogo.Application.Interfaces;
+using Catalogo.Application.Mappings;
+using Catalogo.Domain.Entities;
 using Catalogo.Domain.Interfaces;
 
 namespace Catalogo.Application.Services;
@@ -12,29 +14,31 @@ public class ProdutoService : IProdutoService
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
-
-    public Task Add(ProdutoDTO produtoDTO)
+    public async Task<IEnumerable<ProdutoDTO>> GetProdutos()
     {
-        throw new NotImplementedException();
+        var produtos = await _repository.GetProdutosAsync();
+        return produtos.ToProdutoDTOList();
+    }
+    public async Task<ProdutoDTO?> GetById(int id)
+    {
+        var produto = await _repository.GetByIDAsync(id);
+        return produto?.ToProdutoDTO();
     }
 
-    public Task<ProdutoDTO> GetById(int id)
+    public async Task Add(ProdutoDTO produtoDTO)
     {
-        throw new NotImplementedException();
+        var produto = produtoDTO.ToProduto();
+        _ = await _repository.CreateAsync(produto);
+    }
+    public async Task Update(ProdutoDTO produtoDTO)
+    {
+        var produto = produtoDTO.ToProduto();
+        _ = await _repository.UpdateAsync(produto);
     }
 
-    public Task<IEnumerable<ProdutoDTO>> GetProdutos()
+    public async Task Remove(int? id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task Remove(int? id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task Update(ProdutoDTO produtoDTO)
-    {
-        throw new NotImplementedException();
+        var produto = await _repository.GetByIDAsync(id);
+        _ = await _repository.RemoveAsync(produto);
     }
 }
