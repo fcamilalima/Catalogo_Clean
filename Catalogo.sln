@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo.Domain", "Catalogo.Domain\Catalogo.Domain.csproj", "{A7BE884B-C62B-44CF-980D-391C4115F893}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo.Infraestructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo.CrossCutting", "Catalogo.CrossCutting\Catalogo.CrossCutting.csproj", "{CC478A23-F7FA-4301-8DBF-9AE3677C59D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catologo.API", "Catologo.API\Catologo.API.csproj", "{F0000067-A7B2-45B0-88D5-DAE58C7032E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo.API", "Catologo.API\Catalogo.API.csproj", "{F0000067-A7B2-45B0-88D5-DAE58C7032E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
