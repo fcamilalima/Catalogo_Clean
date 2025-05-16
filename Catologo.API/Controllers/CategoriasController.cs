@@ -35,9 +35,9 @@ public class CategoriasController : ControllerBase
     {
         try
         {
-            var categoria = await _service.GetById(id);
-            if (categoria == null) return NotFound();
-            return Ok(categoria);
+            var categoriaDTO = await _service.GetById(id);
+            if (categoriaDTO == null) return NotFound();
+            return Ok(categoriaDTO);
         }
         catch (Exception)
         {
@@ -48,16 +48,27 @@ public class CategoriasController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] CategoriaDTO categoriaDTO)
     {
-        try
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            await _service.Add(categoriaDTO);
-            return new CreatedAtRouteResult("GetCategoria", 
-                new { id = categoriaDTO.ID }, categoriaDTO);
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+        await _service.Add(categoriaDTO);
+        return new CreatedAtRouteResult("GetCategoria",
+            new { id = categoriaDTO.ID }, categoriaDTO);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> Put(int id, [FromBody] CategoriaDTO categoriaDTO)
+    {
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+        if (id != categoriaDTO.ID) return BadRequest();
+        await _service.Update(categoriaDTO);
+        return Ok(categoriaDTO);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<CategoriaDTO>> Delete(int id)
+    {
+        var categoriaDTO = await _service.GetById(id);
+        if (categoriaDTO == null) return NotFound();
+        await _service.Remove(id);
+        return Ok(categoriaDTO);
     }
 }
