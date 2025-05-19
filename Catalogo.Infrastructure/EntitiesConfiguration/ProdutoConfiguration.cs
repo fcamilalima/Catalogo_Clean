@@ -17,7 +17,7 @@ public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
         builder.Property(p => p.Estoque).HasDefaultValue(1).IsRequired();
         builder.Property(p => p.DataCadastro).IsRequired();
 
-        builder.HasOne(e => e.Categorias).WithMany(e => e.Produtos)
-            .HasForeignKey(e => e.Categorias);
+        builder.HasOne(e => e.Categoria).WithMany(e => e.Produtos)
+            .HasForeignKey(e => e.CategoriaID);
     }
 }

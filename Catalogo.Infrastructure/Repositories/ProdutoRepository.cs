@@ -1,9 +1,9 @@
 ﻿using Catalogo.Domain.Entities;
 using Catalogo.Domain.Interfaces;
-using Catalogo.Infraestructure.Context;
+using Catalogo.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalogo.Infraestructure.Repositories;
+namespace Catalogo.Infrastructure.Repositories;
 
 public class ProdutoRepository : IProdutoRepository
 {
@@ -23,7 +23,7 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<Produto> GetByIDAsync(int? id)
     {
-        return await _context.Produtos.Include(c => c.Categorias)
+        return await _context.Produtos.Include(c => c.Categoria)
             .SingleOrDefaultAsync(p => p.ID == id);
     }
 

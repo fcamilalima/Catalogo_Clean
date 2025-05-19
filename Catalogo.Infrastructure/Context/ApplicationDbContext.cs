@@ -1,7 +1,7 @@
 ﻿using Catalogo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalogo.Infraestructure.Context;
+namespace Catalogo.Infrastructure.Context;
 
 public class ApplicationDbContext : DbContext
 {

@@ -1,5 +1,4 @@
 ﻿using Catalogo.Domain.Validation;
-using System.Collections.Generic;
 
 namespace Catalogo.Domain.Entities;
 
@@ -8,6 +7,7 @@ public sealed class Categoria : Entity
     public Categoria(string nome, string imagemURL)
     {
         ValidateDomain(nome, imagemURL);
+        Produtos = new HashSet<Produto>();
     }
 
     public Categoria(int id, string nome, string imagemURL)
@@ -15,6 +15,7 @@ public sealed class Categoria : Entity
         DomainExceptionValidation.When(id < 0, "Valor do ID inválido!");
         ID = id;
         ValidateDomain(nome, imagemURL);
+        Produtos = new HashSet<Produto>();
     }
 
     public string Nome { get; private set; }
@@ -33,7 +34,7 @@ public sealed class Categoria : Entity
             "O nome deve ter, no mínimo, 3 caracteres!");
 
         DomainExceptionValidation.When(imagemURL.Length < 5,
-            "O nome da imagem deve ter, no máximo, 5 caracteres!");
+            "O nome da imagem deve ter, no mínimo, , 5 caracteres!");
 
         Nome = nome;
         ImagemURL = imagemURL;

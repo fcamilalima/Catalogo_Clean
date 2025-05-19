@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Catalogo.Infraestructure.Context;
-using Catalogo.Infraestructure.Repositories;
+using Catalogo.Infrastructure.Context;
+using Catalogo.Infrastructure.Repositories;
 using Catalogo.Domain.Interfaces;
 using Catalogo.Application.Interfaces;
 using Catalogo.Application.Services;
@@ -16,12 +16,12 @@ public static class DependencyInjectionAPI
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-            new MySqlServerVersion(new Version(8, 0, 15))));
+            new MySqlServerVersion(new Version(8, 4, 4))));
 
         services.AddScoped<ICategoriaRepository, CategoriaRepository>();
         services.AddScoped<IProdutoRepository, ProdutoRepository>();
         services.AddScoped<IProdutoService, ProdutoService>();
-        services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+        services.AddScoped<ICategoriaService, CategoriaService>();
 
         return services;
     }

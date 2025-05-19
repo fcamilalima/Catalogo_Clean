@@ -1,9 +1,9 @@
 ﻿using Catalogo.Domain.Entities;
 using Catalogo.Domain.Interfaces;
-using Catalogo.Infraestructure.Context;
+using Catalogo.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalogo.Infraestructure.Repositories;
+namespace Catalogo.Infrastructure.Repositories;
 
 public class CategoriaRepository : ICategoriaRepository
 {
