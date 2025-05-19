@@ -9,9 +9,9 @@ namespace Catalogo.Domain.Entities;
 
 public sealed class Produto : Entity
 {
-    public Produto(string nome, string descricao, decimal preco, string imagemUrl, int estoque, DateTime dataCadastro)
+    public Produto(string nome, string descricao, decimal preco, string imagemURL, int estoque, DateTime dataCadastro)
     {
-        ValidateDomain(nome, descricao, preco, imagemUrl, estoque, dataCadastro);
+        ValidateDomain(nome, descricao, preco, imagemURL, estoque, dataCadastro);
     }
 
     public string Nome { get; private set; }
@@ -22,7 +22,7 @@ public sealed class Produto : Entity
     public DateTime DataCadastro { get; private set; }
 
 
-    public Categoria Categorias { get; set; }
+    public Categoria Categoria { get; set; }
     public int CategoriaID {  get; set; }
 
     public void Update(string nome, string descricao, decimal preco, string imagemURL, 
