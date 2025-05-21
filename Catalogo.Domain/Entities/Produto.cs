@@ -1,17 +1,12 @@
 ﻿using Catalogo.Domain.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalogo.Domain.Entities;
 
 public sealed class Produto : Entity
 {
-    public Produto(string nome, string descricao, decimal preco, string imagemURL, int estoque, DateTime dataCadastro)
+    public Produto(int ID, string nome, string descricao, decimal preco, string imagemURL, int estoque, DateTime dataCadastro)
     {
-        ValidateDomain(nome, descricao, preco, imagemURL, estoque, dataCadastro);
+        ValidateDomain(ID, nome, descricao, preco, imagemURL, estoque, dataCadastro);
     }
 
     public string Nome { get; private set; }
@@ -25,13 +20,13 @@ public sealed class Produto : Entity
     public Categoria Categoria { get; set; }
     public int CategoriaID {  get; set; }
 
-    public void Update(string nome, string descricao, decimal preco, string imagemURL, 
+    public void Update(int id, string nome, string descricao, decimal preco, string imagemURL, 
         int estoque, DateTime dataCadastro, int categoriaID)
     {
-        ValidateDomain(nome, descricao, preco, imagemURL, estoque, dataCadastro);
+        ValidateDomain(id, nome, descricao, preco, imagemURL, estoque, dataCadastro);
         CategoriaID = categoriaID;
     }
-    private void ValidateDomain(string nome, string descricao, decimal preco, string imagemURL, int estoque, DateTime dataCadastro)
+    private void ValidateDomain(int ID, string nome, string descricao, decimal preco, string imagemURL, int estoque, DateTime dataCadastro)
     {
         DomainExceptionValidation.When(string.IsNullOrEmpty(nome), 
             "Nome inválido.O nome é obrigatório!");
@@ -51,7 +46,7 @@ public sealed class Produto : Entity
             "O nome da imagem não pode exceder 250 caracteres");
 
         DomainExceptionValidation.When(estoque < 0, "Estoque inválido!");
-
+        this.ID = ID;
         Nome = nome;
         Descricao = descricao;
         Preco = preco;

@@ -24,7 +24,7 @@ public static class DomainToDTOMappingProdutoProfile
     public static Produto? ToProduto(this ProdutoDTO produtoDTO)
     {
         if (produtoDTO is null) return null;
-        return new Produto(produtoDTO.Nome, produtoDTO.Descricao, produtoDTO.Preco,
+        return new Produto(produtoDTO.ID, produtoDTO.Nome, produtoDTO.Descricao, produtoDTO.Preco,
             produtoDTO.ImagemURL, produtoDTO.Estoque, produtoDTO.DataCadastro)
         {
             CategoriaID = produtoDTO.CategoriaID
